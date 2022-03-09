@@ -1,0 +1,40 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // If you have changed target frameworks, make sure to update the program path.
+            "program": "${workspaceFolder}/src/ConsoleChat/bin/Debug/net6.0/ConsoleChat.dll",
+            "args": ["${input:name}", "${input:ablyChannel}", "${input:ablyApiKey}"],
+            "cwd": "${workspaceFolder}/src/ConsoleChat",
+            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+            "console": "integratedTerminal",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "name",
+            "type": "promptString",
+            "description": "Enter your name",
+        },
+        {
+            "id": "ablyChannel",
+            "type": "promptString",
+            "description": "Enter a channel name",
+        },
+        {
+            "id": "ablyApiKey",
+            "type": "promptString",
+            "description": "Enter the Ably API key",
+        }
+    ]
+}
