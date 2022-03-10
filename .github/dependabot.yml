@@ -5,3 +5,8 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+
+  - package-ecosystem: "nuget"
+    directory: "/src/ConsoleChat"
+    schedule:
+      interval: "daily"
