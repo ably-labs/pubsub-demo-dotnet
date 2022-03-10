@@ -1,0 +1,5 @@
+############################
+# Diagnostic configuration #
+############################
+is_global = true
+dotnet_diagnostic.CS0162.severity = suggestion

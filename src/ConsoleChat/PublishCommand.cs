@@ -22,7 +22,8 @@ public sealed class PublishCommand : AsyncCommand<Settings>
                     "blue"
                 }));
 
-        while (true) {
+        while (true)
+        {
             var text = AnsiConsole.Ask<string>($"[{color}]{name}: [/]");
             var chatMessage = new ChatMessage(name, text, color);
 
