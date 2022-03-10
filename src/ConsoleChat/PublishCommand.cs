@@ -2,15 +2,15 @@ public sealed class PublishCommand : AsyncCommand<Settings>
 {
     public override async Task<int> ExecuteAsync([NotNull] CommandContext context, [NotNull] Settings settings)
     {
-        var ably = new AblyRealtime(settings.AblyConnection);
+        var ably = new AblyRealtime(settings.AblyApiKey);
         var channel = ably.Channels.Get(settings.Channel);
 
         var intro = new FigletText(FigletFont.Default, "Welcome to Console Chat!").Color(Color.Yellow).Centered();
         AnsiConsole.Write(intro);
 
-        var channelRule = new Rule($"You're publishing to the {settings.Channel} channel.")
+        var channelInfo = new Rule($"You're publishing to the {settings.Channel} channel.")
             .Centered();
-        AnsiConsole.Write(channelRule);
+        AnsiConsole.Write(channelInfo);
 
         var name = AnsiConsole.Ask<string>("What is your name?");
         var color = AnsiConsole.Prompt(

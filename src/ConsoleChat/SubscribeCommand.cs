@@ -2,7 +2,7 @@ public sealed class SubscribeCommand : Command<Settings>
 {
     public override int Execute([NotNull] CommandContext context, [NotNull] Settings settings)
     {
-        var ably = new AblyRealtime(settings.AblyConnection);
+        var ably = new AblyRealtime(settings.AblyApiKey);
         var channel = ably.Channels.Get(
             settings.Channel,
             new ChannelOptions { 
@@ -14,9 +14,9 @@ public sealed class SubscribeCommand : Command<Settings>
             .Centered();
         AnsiConsole.Write(intro);
 
-        var channelRule = new Rule($"You've subscribed to the {settings.Channel} channel.")
+        var channelInfo = new Rule($"You've subscribed to the {settings.Channel} channel.")
             .Centered();
-        AnsiConsole.Write(channelRule);
+        AnsiConsole.Write(channelInfo);
         
         var chatMessageQueue = new Queue<ChatMessage>();
         channel.Subscribe(message =>
@@ -27,7 +27,7 @@ public sealed class SubscribeCommand : Command<Settings>
  
         while(true)
         {
-            if (chatMessageQueue.TryDequeue(out ChatMessage chatMessage))
+            if (chatMessageQueue.TryDequeue(out ChatMessage? chatMessage))
             {
                 var panel = new Panel(chatMessage.Message)
                     .Header(new PanelHeader(chatMessage.Name, Justify.Left))
