@@ -9,12 +9,13 @@ public sealed class SubscribeCommand : Command<Settings>
                 Params = new ChannelParams {{ "rewind", "1m" }} 
             });
         
-        var welcomeRule = new Rule("[red]Welcome to Console Chat![/]").Border(BoxBorder.Double);
-        welcomeRule.Alignment = Justify.Left;
-        AnsiConsole.Write(welcomeRule);
+        var intro = new FigletText(FigletFont.Default, "Welcome to Console Chat!")
+            .Color(Color.Yellow)
+            .Centered();
+        AnsiConsole.Write(intro);
 
-        var channelRule = new Rule($"You've subscribed to the {settings.Channel} channel.");
-        channelRule.Alignment = Justify.Left;
+        var channelRule = new Rule($"You've subscribed to the {settings.Channel} channel.")
+            .Centered();
         AnsiConsole.Write(channelRule);
         
         var chatMessageQueue = new Queue<ChatMessage>();
