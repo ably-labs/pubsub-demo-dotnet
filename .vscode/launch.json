@@ -8,7 +8,7 @@
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/src/ConsoleChat/bin/Debug/net6.0/ConsoleChat.dll",
-            "args": ["${input:name}", "${input:ablyChannel}", "${input:ablyApiKey}"],
+            "args": ["${input:type}", "${input:ablyChannel}", "${input:ablyApiKey}"],
             "cwd": "${workspaceFolder}/src/ConsoleChat",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "integratedTerminal",
@@ -21,6 +21,12 @@
         }
     ],
     "inputs": [
+        {
+            "id": "type",
+            "type": "pickString",
+            "options": ["pub", "sub"],
+            "description": "Select if your going to publish or subscribe",
+        },
         {
             "id": "name",
             "type": "promptString",
