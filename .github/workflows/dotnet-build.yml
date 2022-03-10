@@ -1,6 +1,9 @@
 name: .NET 6 Build
 
 on:
+  push:
+    paths:
+      - 'src/**'
   pull_request:
     types: [opened, edited, synchronize, reopened]
     paths:
