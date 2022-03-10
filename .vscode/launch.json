@@ -28,11 +28,6 @@
             "description": "Select if your going to publish or subscribe",
         },
         {
-            "id": "name",
-            "type": "promptString",
-            "description": "Enter your name",
-        },
-        {
             "id": "ablyChannel",
             "type": "promptString",
             "description": "Enter a channel name",
