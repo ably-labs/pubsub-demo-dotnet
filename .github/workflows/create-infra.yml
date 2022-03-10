@@ -17,3 +17,4 @@ jobs:
         with:
             account-id: '${{ secrets.ABLY_ACCOUNT_ID }}'
             control-api-key: '${{ secrets.ABLY_CONTROL_API_KEY }}'
+            key-name: 'pubsub-demo'
