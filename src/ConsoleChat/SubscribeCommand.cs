@@ -10,19 +10,12 @@ public sealed class SubscribeCommand : Command<Settings>
                 Params = new ChannelParams { { "rewind", "1m" } }
             });
 
-        var intro = new FigletText(FigletFont.Default, "Welcome to Console Chat!")
-            .Color(Color.Yellow)
-            .Centered();
-        AnsiConsole.Write(intro);
-
-        var channelInfo = new Rule($"You've subscribed to the {settings.Channel} channel.")
-            .Centered();
-        AnsiConsole.Write(channelInfo);
+        DrawConsole(settings);
 
         var chatMessageQueue = new Queue<ChatMessage>();
         channel.Subscribe(message =>
         {
-            var chatMessage = ((JObject)message.Data).ToObject<ChatMessage>();
+            var chatMessage = message.Data.ToObject<ChatMessage>();
             chatMessageQueue.Enqueue(chatMessage);
         });
 
@@ -38,6 +31,18 @@ public sealed class SubscribeCommand : Command<Settings>
         }
 
         return 0;
+    }
+
+    private static void DrawConsole(Settings settings)
+    {
+        var intro = new FigletText(FigletFont.Default, "Welcome to Console Chat!")
+                    .Color(Color.Yellow)
+                    .Centered();
+        AnsiConsole.Write(intro);
+
+        var channelInfo = new Rule($"You've subscribed to the {settings.Channel} channel.")
+            .Centered();
+        AnsiConsole.Write(channelInfo);
     }
 
     private Color ConvertStringToColor(string color)

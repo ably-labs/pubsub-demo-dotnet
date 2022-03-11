@@ -4,7 +4,21 @@ public sealed class PublishCommand : AsyncCommand<Settings>
     {
         var ably = new AblyRealtime(settings.AblyApiKey);
         var channel = ably.Channels.Get(settings.Channel);
+        (string name, string color) input = DrawConsoleAndGetInput(settings);
 
+        while (true)
+        {
+            var text = AnsiConsole.Ask<string>($"[{input.color}]{input.name}: [/]");
+            var chatMessage = new ChatMessage(input.name, text, input.color);
+
+            await channel.PublishAsync(nameof(ChatMessage), chatMessage);
+        }
+
+        return 0;
+    }
+
+    private static (string name, string color) DrawConsoleAndGetInput(Settings settings)
+    {
         var intro = new FigletText(FigletFont.Default, "Welcome to Console Chat!").Color(Color.Yellow).Centered();
         AnsiConsole.Write(intro);
 
@@ -20,16 +34,8 @@ public sealed class PublishCommand : AsyncCommand<Settings>
                     "red",
                     "green",
                     "blue"
-                }));
+        }));
 
-        while (true)
-        {
-            var text = AnsiConsole.Ask<string>($"[{color}]{name}: [/]");
-            var chatMessage = new ChatMessage(name, text, color);
-
-            await channel.PublishAsync(nameof(ChatMessage), chatMessage);
-        }
-
-        return 0;
+        return (name, color);
     }
 }

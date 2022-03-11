@@ -3,3 +3,4 @@
 ############################
 is_global = true
 dotnet_diagnostic.CS0162.severity = suggestion
+dotnet_diagnostic.CS8618.severity = suggestion
