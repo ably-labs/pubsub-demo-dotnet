@@ -2,16 +2,23 @@ public sealed class PublishCommand : AsyncCommand<Settings>
 {
     public override async Task<int> ExecuteAsync([NotNull] CommandContext context, [NotNull] Settings settings)
     {
-        var ably = new AblyRealtime(settings.AblyApiKey);
+        (string Name, string Color) input = DrawConsoleAndGetInput(settings);
+
+        var clientOptions = new ClientOptions(settings.AblyApiKey) { ClientId = input.Name };
+        var ably = new AblyRealtime(clientOptions);
         var channel = ably.Channels.Get(settings.Channel);
-        (string name, string color) input = DrawConsoleAndGetInput(settings);
+        channel.Presence.Enter("publisher");
 
         while (true)
         {
-            var text = AnsiConsole.Ask<string>($"[{input.color}]{input.name}: [/]");
-            var chatMessage = new ChatMessage(input.name, text, input.color);
+            var text = AnsiConsole.Ask<string>($"[{input.Color}]{input.Name }: [/]");
+            var chatMessage = new ConsoleMessage(input.Name, text, input.Color);
 
-            await channel.PublishAsync(nameof(ChatMessage), chatMessage);
+            var result  = await channel.PublishAsync(nameof(ConsoleMessage), chatMessage);
+            if (result.IsFailure)
+            {
+                AnsiConsole.MarkupLine($"[red]{result.Error.Message}[/]");
+            }
         }
 
         return 0;

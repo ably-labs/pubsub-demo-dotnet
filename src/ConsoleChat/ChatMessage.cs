@@ -1,9 +1,9 @@
-public sealed class ChatMessage
+public sealed class ConsoleMessage
 {
-    public ChatMessage()
+    public ConsoleMessage()
     {
     }
-    public ChatMessage(string name, string message, string color)
+    public ConsoleMessage(string name, string message, string color)
     {
         Name = name;
         Message = message;
