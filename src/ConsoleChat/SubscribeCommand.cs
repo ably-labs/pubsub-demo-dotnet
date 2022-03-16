@@ -1,6 +1,7 @@
 public sealed class SubscribeCommand : Command<Settings>
 {
-    private Dictionary<string, string> clientColors = new Dictionary<string, string>();
+    private Dictionary<string, string> clientColors = new Dictionary<string, string?>();
+    private record ConsoleMessage(string Name, string Message, string Color);
 
     public override int Execute([NotNull] CommandContext context, [NotNull] Settings settings)
     {
@@ -18,7 +19,7 @@ public sealed class SubscribeCommand : Command<Settings>
         var consoleMessageQueue = new Queue<ConsoleMessage>();
 
         channel.Presence.Subscribe(member => {
-            clientColors.Add(member.ClientId, member.Data?.ToString());
+            clientColors.Add(member.ClientId, (string)member.Data);
             var color = GetColorForClient(member.ClientId);
             ConsoleMessage? presenceMessage = null;
             switch (member.Action)
@@ -43,7 +44,7 @@ public sealed class SubscribeCommand : Command<Settings>
         channel.Subscribe(message =>
         {
             var color = GetColorForClient(message.ClientId);
-            var consoleMessage = new ConsoleMessage(message.ClientId, message.Data.ToString(), color);
+            var consoleMessage = new ConsoleMessage(message.ClientId, (string)message.Data, color);
             consoleMessageQueue.Enqueue(consoleMessage);
         });
 
@@ -62,14 +63,6 @@ public sealed class SubscribeCommand : Command<Settings>
         return 0;
     }
 
-    private string GetColorForClient(string clientId)
-    {
-        string messageColor = "White";
-        clientColors.TryGetValue(clientId, out messageColor);
-
-        return messageColor;
-    }
-
     private static string DrawConsoleAndGetName(Settings settings)
     {
         var intro = new FigletText(FigletFont.Default, "Welcome to Console Chat!")
@@ -83,6 +76,11 @@ public sealed class SubscribeCommand : Command<Settings>
 
         var name = AnsiConsole.Ask<string>("What is your name?");
         return name;
+    }
+
+    private string GetColorForClient(string clientId)
+    {
+        return clientColors.TryGetValue(clientId,out string? messageColor) ? messageColor : "White";
     }
 
     private Color ConvertStringToColor(string color)
