@@ -16,5 +16,4 @@
 
         return await app.RunAsync(args);
     }
-
 }
