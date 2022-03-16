@@ -1,6 +1,6 @@
 # PubSub Demo using .NET 6
 
-![Console chat demo with two publishers and two subscribers](media/_console_chat.gif)
+![Console chat demo with two publishers and two subscribers](media/console_chat.gif)
 
 ## Description
 
