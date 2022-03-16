@@ -7,14 +7,12 @@ public sealed class PublishCommand : AsyncCommand<Settings>
         var clientOptions = new ClientOptions(settings.AblyApiKey) { ClientId = input.Name };
         var ably = new AblyRealtime(clientOptions);
         var channel = ably.Channels.Get(settings.Channel);
-        channel.Presence.Enter("publisher");
+        channel.Presence.Enter(input.Color);
 
         while (true)
         {
             var text = AnsiConsole.Ask<string>($"[{input.Color}]{input.Name }: [/]");
-            var chatMessage = new ConsoleMessage(input.Name, text, input.Color);
-
-            var result  = await channel.PublishAsync(nameof(ConsoleMessage), chatMessage);
+            var result  = await channel.PublishAsync("chat", text);
             if (result.IsFailure)
             {
                 AnsiConsole.MarkupLine($"[red]{result.Error.Message}[/]");

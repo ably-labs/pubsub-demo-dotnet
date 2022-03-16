@@ -1,5 +1,7 @@
 public sealed class SubscribeCommand : Command<Settings>
 {
+    private Dictionary<string, string> clientColors = new Dictionary<string, string>();
+
     public override int Execute([NotNull] CommandContext context, [NotNull] Settings settings)
     {
         var name = DrawConsoleAndGetName(settings);
@@ -16,14 +18,16 @@ public sealed class SubscribeCommand : Command<Settings>
         var consoleMessageQueue = new Queue<ConsoleMessage>();
 
         channel.Presence.Subscribe(member => {
+            clientColors.Add(member.ClientId, member.Data?.ToString());
+            var color = GetColorForClient(member.ClientId);
             ConsoleMessage? presenceMessage = null;
             switch (member.Action)
             {
                 case PresenceAction.Enter:
-                    presenceMessage = new ConsoleMessage("Presence", $"{member.ClientId} has joined as {member.Data}.", "White");
+                    presenceMessage = new ConsoleMessage(string.Empty, $"{member.ClientId} has joined.", color);
                     break;
                 case PresenceAction.Leave:
-                     presenceMessage = new ConsoleMessage("Presence", $"{member.ClientId} has left.", "White");
+                     presenceMessage = new ConsoleMessage(string.Empty, $"{member.ClientId} has left.", color);
                     break;
                 default:
                     break;
@@ -34,11 +38,12 @@ public sealed class SubscribeCommand : Command<Settings>
                 consoleMessageQueue.Enqueue(presenceMessage);
             }
         });
-        channel.Presence.Enter("subscriber");
+        channel.Presence.Enter();
 
         channel.Subscribe(message =>
         {
-            var consoleMessage = message.Data.ToObject<ConsoleMessage>();
+            var color = GetColorForClient(message.ClientId);
+            var consoleMessage = new ConsoleMessage(message.ClientId, message.Data.ToString(), color);
             consoleMessageQueue.Enqueue(consoleMessage);
         });
 
@@ -55,6 +60,14 @@ public sealed class SubscribeCommand : Command<Settings>
         }
 
         return 0;
+    }
+
+    private string GetColorForClient(string clientId)
+    {
+        string messageColor = "White";
+        clientColors.TryGetValue(clientId, out messageColor);
+
+        return messageColor;
     }
 
     private static string DrawConsoleAndGetName(Settings settings)
