@@ -1,6 +1,6 @@
 public sealed class SubscribeCommand : Command<Settings>
 {
-    private Dictionary<string, string> clientColors = new Dictionary<string, string?>();
+    private Dictionary<string, string?> clientColors = new Dictionary<string, string?>();
     private record ConsoleMessage(string Name, string Message, string Color);
 
     public override int Execute([NotNull] CommandContext context, [NotNull] Settings settings)
