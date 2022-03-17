@@ -46,6 +46,27 @@ Alternatively, you can start the application in Debug mode in VSCode by pressing
 
 ![Input fields when debugging in VSCode](media/%20console_chat_vscode_debug.gif)
 
+### Publishing the application
+
+In case you want to publish and distribute this console app to use this with your co-workers or friends, you need to do the following:
+
+1. Ensure you're in the folder where the *csproj* file is located.
+2. Run the [`dotnet publish`]((https://docs.microsoft.com/dotnet/core/tools/dotnet-publish)) command:
+
+    ```shell
+    dotnet publish -c Release -r <RUNTIME_IDENTFIER> --self-contained=false /p:PublishSingleFile=true
+    ```
+
+    Example for windows x64 machines:
+
+    ```shell
+    dotnet publish -c Release -r win-x64 --self-contained=false /p:PublishSingleFile=true
+    ```
+
+    For more information on the available runtime identifiers, see the [.NET RID Catalog](https://docs.microsoft.com/dotnet/core/rid-catalog).
+
+3. The release version of the application is now available in the `src\ConsoleChat\bin\Release\net6.0\<RUNTIME_IDENTIFIER>\publish` folder.
+
 ## Contributing
 
 Want to help contributing to this project? Have a look at our [contributing guide](CONTRIBUTING.md)!
