@@ -6,8 +6,6 @@
 
 This is a .NET 6 console application that demonstrates how [Ably](https://ably.com) can be used for pub/sub messaging.
 
-<!--Read the related blog post at [ably.com](https://ably.com/blog/how-to-use-pub-sub-in-c-net-to-build-a-chat-app) that contains a step by step building guide.-->
-
 ## Tech stack
 
 The project uses the following components:
@@ -53,7 +51,7 @@ Alternatively, you can start the application in Debug mode in VSCode by pressing
 In case you want to publish and distribute this console app to use this with your co-workers or friends, you need to do the following:
 
 1. Ensure you're in the folder where the *csproj* file is located.
-2. Run the [`dotnet publish`]((https://docs.microsoft.com/dotnet/core/tools/dotnet-publish)) command:
+2. Run the [`dotnet publish`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish) command:
 
     ```shell
     dotnet publish -c Release -r <RUNTIME_IDENTFIER> --self-contained=false /p:PublishSingleFile=true
