@@ -1,10 +1,12 @@
-# PubSub Demo using .NET 6
+# Pub/Sub Demo using .NET 6
 
 ![Console chat demo with two publishers and two subscribers](media/console_chat.gif)
 
 ## Description
 
-This is a console application that demonstrates how [Ably](https://ably.com) can be used for PubSub messaging.
+This is a .NET 6 console application that demonstrates how [Ably](https://ably.com) can be used for pub/sub messaging.
+
+<!--Read the related blog post at [ably.com](https://ably.com/blog/how-to-use-pub-sub-in-c-net-to-build-a-chat-app) that contains a step by step building guide.-->
 
 ## Tech stack
 
@@ -12,7 +14,7 @@ The project uses the following components:
 
 - [.NET 6](https://dotnet.microsoft.com/download/dotnet/6.0), .NET 6 SDK.
 - [Spectre.Console](https://spectreconsole.net/), a library to make beautiful console applications.
-- [Ably](https://ably.com/), for realtime messaging at scale.
+- [Ably](https://ably.com/), for real-time messaging at scale.
 
 ## Building & running locally
 
@@ -22,7 +24,7 @@ The project uses the following components:
 2. [Sign up](https://ably.com/signup) or [log in](https://ably.com/login) to ably.com, and [create a new app and copy the API key](https://faqs.ably.com/setting-up-and-managing-api-keys).
 3. Clone this repository to your local machine.
 
-### Building the project
+### Building & running the project
 
 1. Build the console app by running `dotnet build` in the `src\ConsoleChat` folder.
    > The executable is located in the `src\ConsoleChat\bin\Debug\net6.0` folder.
