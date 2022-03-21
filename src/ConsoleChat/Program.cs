@@ -1,10 +1,19 @@
-﻿var app = new CommandApp();
-app.Configure(config =>
+﻿public class Program
 {
-    config.AddCommand<PublishCommand>("pub");
-    config.AddCommand<SubscribeCommand>("sub");
-    config.SetApplicationName("ConsoleChat.exe");
-    config.AddExample(new[] { "pub", "channel1", "AblyApiKey" });
-    config.AddExample(new[] { "sub", "channel1", "AblyApiKey" });
-});
-return app.Run(args);
+    public static async Task<int> Main(string[] args)
+    {
+        var app = new CommandApp();
+        app.Configure(config =>
+        {
+            config.AddCommand<PublishCommand>("pub")
+                .WithDescription("Publish messages to a channel.")
+                .WithExample(new[] { "pub", "channel1", "AblyApiKey" });
+            config.AddCommand<SubscribeCommand>("sub")
+                .WithDescription("Subscribe to a channel.")
+                .WithExample(new[] { "sub", "channel1", "AblyApiKey" });
+            config.SetApplicationName("ConsoleChat.exe");
+        });
+
+        return await app.RunAsync(args);
+    }
+}

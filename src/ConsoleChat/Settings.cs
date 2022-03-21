@@ -8,6 +8,7 @@ public sealed class Settings : CommandSettings
 
     [CommandArgument(0, "<channel>")]
     public string Channel { get; }
+
     [CommandArgument(1, "<ablyApiKey>")]
     public string AblyApiKey { get; }
 }

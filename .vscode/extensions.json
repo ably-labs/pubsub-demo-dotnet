@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "ms-dotnettools.csharp",
+    "kreativ-software.csharpextensions",
+    "vsls-contrib.codetour"
+  ]
+}
