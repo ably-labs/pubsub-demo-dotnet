@@ -80,4 +80,4 @@ You want more information about this sample or using .NET & Ably in general? Fee
 - [Ably.com](https://ably.com)
 
 ---
-![Ably logo](/media/ably-color.svg)
+![Ably logo](https://static.ably.dev/badge-black.svg?pubsub-demo-dotnet)
