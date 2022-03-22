@@ -80,7 +80,12 @@ public sealed class SubscribeCommand : Command<Settings>
 
     private string GetColorForClient(string clientId)
     {
-        return clientColors.TryGetValue(clientId,out string? messageColor) ? messageColor : "White";
+        var defaultColor = "White";
+        if (clientColors.TryGetValue(clientId,out string? messageColor))
+        {
+            return messageColor ?? defaultColor;
+        }
+        return defaultColor;
     }
 
     private Color ConvertStringToColor(string color)
