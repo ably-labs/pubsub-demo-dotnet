@@ -75,9 +75,10 @@ Want to help contributing to this project? Have a look at our [contributing guid
 
 You want more information about this sample or using .NET & Ably in general? Feel free to contact me via Twitter [@marcduiker](https://twitter.com/marcduiker).
 
-- [Ably on Twitter](https://twitter.com/ablyrealtime)
-- [Ably SDKs](https://github.com/ably/)
-- [Ably.com](https://ably.com)
+- [Join our Discord server](https://discord.gg/q89gDHZcBK)
+- [Follow us on Twitter](https://twitter.com/ablyrealtime)
+- [Use our SDKs](https://github.com/ably/)
+- [Visit our website](https://ably.com)
 
 ---
-![Ably logo](https://static.ably.dev/badge-black.svg?pubsub-demo-dotnet)
+[![Ably logo](https://static.ably.dev/badge-black.svg?ably-labs-template-repo)](https://ably.com)
