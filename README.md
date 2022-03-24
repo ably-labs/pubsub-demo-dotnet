@@ -4,7 +4,7 @@
 
 ## Description
 
-This is a .NET 6 console application that demonstrates how [Ably](https://ably.com) can be used for pub/sub messaging.
+This is a .NET 6 console application that demonstrates how [Ably](https://ably.com) can be used for pub/sub messaging. You can read all about this demo in this [blog post](https://ably.com/blog/use-pub-sub-to-build-a-chat-app-with-csharp-net).
 
 ## Tech stack
 
