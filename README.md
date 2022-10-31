@@ -12,14 +12,14 @@ The project uses the following components:
 
 - [.NET 6](https://dotnet.microsoft.com/download/dotnet/6.0), .NET 6 SDK.
 - [Spectre.Console](https://spectreconsole.net/), a library to make beautiful console applications.
-- [Ably](https://ably.com/), for real-time messaging at scale.
+- [Ably](https://ably.com/?utm_campaign=GLB-2203-pubsub-demo-dotnet&utm_content=repo-pubsub-demo-dotnet&utm_source=github&utm_medium=repo&src=GLB-2203-pubsub-demo-dotnet-github), for real-time messaging at scale.
 
 ## Building & running locally
 
 ### Prerequisites
 
 1. Install the [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0) .
-2. [Sign up](https://ably.com/signup) or [log in](https://ably.com/login) to ably.com, and [create a new app and copy the API key](https://faqs.ably.com/setting-up-and-managing-api-keys).
+2. [Sign up](https://ably.com/signup?utm_campaign=GLB-2203-pubsub-demo-dotnet&utm_content=repo-pubsub-demo-dotnet&utm_source=github&utm_medium=repo&src=GLB-2203-pubsub-demo-dotnet-github) or [log in](https://ably.com/login?utm_campaign=GLB-2203-pubsub-demo-dotnet&utm_content=repo-pubsub-demo-dotnet&utm_source=github&utm_medium=repo&src=GLB-2203-pubsub-demo-dotnet-github) to ably.com, and [create a new app and copy the API key](https://faqs.ably.com/setting-up-and-managing-api-keys?utm_campaign=GLB-2203-pubsub-demo-dotnet&utm_content=repo-pubsub-demo-dotnet&utm_source=github&utm_medium=repo&src=GLB-2203-pubsub-demo-dotnet-github).
 3. Clone this repository to your local machine.
 
 ### Building & running the project
@@ -73,12 +73,12 @@ Want to help contributing to this project? Have a look at our [contributing guid
 
 ## More info
 
-You want more information about this sample or using .NET & Ably in general? Feel free to contact me via Twitter [@marcduiker](https://twitter.com/marcduiker).
+You want more information about this sample or using .NET & Ably in general? Feel free to contact me via [Discord](https://go.ably.com/discord).
 
-- [Join our Discord server](https://discord.gg/q89gDHZcBK)
+- [Join our Discord server](https://go.ably.com/discord)
 - [Follow us on Twitter](https://twitter.com/ablyrealtime)
 - [Use our SDKs](https://github.com/ably/)
-- [Visit our website](https://ably.com)
+- [Visit our website](https://ably.com?utm_campaign=GLB-2203-pubsub-demo-dotnet&utm_content=repo-pubsub-demo-dotnet&utm_source=github&utm_medium=repo&src=GLB-2203-pubsub-demo-dotnet-github)
 
 ---
-[![Ably logo](https://static.ably.dev/badge-black.svg?pubsub-demo-dotnet)](https://ably.com)
+[![Ably logo](https://static.ably.dev/badge-black.svg?pubsub-demo-dotnet)](https://ably.com?utm_campaign=GLB-2203-pubsub-demo-dotnet&utm_content=repo-pubsub-demo-dotnet&utm_source=github&utm_medium=repo&src=GLB-2203-pubsub-demo-dotnet-github)
