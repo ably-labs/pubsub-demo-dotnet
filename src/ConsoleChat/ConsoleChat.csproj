@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ably.io" Version="1.2.9" />
+    <PackageReference Include="ably.io" Version="1.2.11" />
     <PackageReference Include="Spectre.Console" Version="0.44.0" />
   </ItemGroup>
 
